@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Resume</title>
   <link rel="stylesheet" href="style.css">
+  <!-- jsPDF + html2canvas (from CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="action-bar">
+    <button id="theme-btn">🌙 Dark Mode</button>
+    <button id="print-btn">🖨️ Print to PDF</button>
+    <button id="download-pdf-btn">📥 Download PDF</button>
+  </div>
+
+  <div class="container" id="resume">
     <!-- Header -->
     <header>
       <img src="profile.jpg" alt="Profile Photo" class="profile">
@@ -31,16 +40,20 @@
     <section>
       <h3>Experience</h3>
       <div class="job">
-        <h4>Senior Developer @ TechCorp</h4>
-        <span>2021 – Present</span>
+        <div class="job-header">
+          <h4>Senior Developer @ TechCorp</h4>
+          <span>2021 – Present</span>
+        </div>
         <p>
           - Led a team of 5 engineers to build scalable web apps.<br>
           - Improved performance by 30% with optimized architecture.
         </p>
       </div>
       <div class="job">
-        <h4>Software Engineer @ WebWorks</h4>
-        <span>2018 – 2021</span>
+        <div class="job-header">
+          <h4>Software Engineer @ WebWorks</h4>
+          <span>2018 – 2021</span>
+        </div>
         <p>
           - Developed full-stack apps with React & Node.js.<br>
           - Automated CI/CD pipelines for faster deployment.
@@ -69,5 +82,54 @@
       </ul>
     </section>
   </div>
+
+  <!-- Script -->
+  <script>
+    const themeBtn = document.getElementById("theme-btn");
+    const printBtn = document.getElementById("print-btn");
+    const downloadBtn = document.getElementById("download-pdf-btn");
+    const body = document.body;
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark-mode");
+      themeBtn.textContent = "☀️ Light Mode";
+    }
+
+    // Theme toggle
+    themeBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+        themeBtn.textContent = "☀️ Light Mode";
+        localStorage.setItem("theme", "dark");
+      } else {
+        themeBtn.textContent = "🌙 Dark Mode";
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    // Print to PDF (browser print)
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+
+    // Direct PDF download
+    downloadBtn.addEventListener("click", () => {
+      const resume = document.getElementById("resume");
+
+      html2canvas(resume, { scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("My_Resume.pdf");
+      });
+    });
+  </script>
 </body>
 </html>
