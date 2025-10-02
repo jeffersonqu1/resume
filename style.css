@@ -75,3 +75,20 @@
     margin: 10mm;
   }
 }
+
+
+/* Style for Share button */
+#linkedin-share {
+  background: #0077B5; /* LinkedIn blue */
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+#linkedin-share:hover {
+  background: #005582;
+}
