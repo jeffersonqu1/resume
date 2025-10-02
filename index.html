@@ -10,6 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <canvas id="rain"></canvas>
+
   <div class="action-bar">
   <button id="theme-btn">🌙 Dark Mode</button>
   <button id="print-btn">🖨️ Print to PDF</button>
@@ -94,6 +96,62 @@
     const printBtn = document.getElementById("print-btn");
     const downloadBtn = document.getElementById("download-pdf-btn");
     const body = document.body;
+
+     const canvas = document.getElementById("rain");
+    const ctx = canvas.getContext("2d");
+    let drops = [];
+
+    // Fullscreen canvas
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Create raindrops
+    class Drop {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.length = 15 + Math.random() * 20;
+        this.speed = 4 + Math.random() * 4;
+        this.opacity = 0.3 + Math.random() * 0.3;
+      }
+      fall() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(174,194,224,${this.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x, this.y + this.length);
+        ctx.stroke();
+      }
+    }
+
+    // Create drops
+    for (let i = 0; i < 150; i++) {
+      drops.push(new Drop());
+    }
+
+    // Animate rain
+    function animateRain() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let drop of drops) {
+        drop.fall();
+        drop.draw();
+      }
+      requestAnimationFrame(animateRain);
+    }
+    animateRain();
 
     // Load saved theme
     if (localStorage.getItem("theme") === "dark") {
