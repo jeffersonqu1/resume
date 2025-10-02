@@ -1,3 +1,154 @@
+/* General styling (light mode by default) */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Action bar (buttons) */
+.action-bar {
+  text-align: right;
+  padding: 10px 20px;
+}
+.action-bar button {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+.action-bar button:hover {
+  background: #388E3C;
+}
+
+/* Resume container */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .container {
+  background: #1e1e1e;
+  color: #ddd;
+  box-shadow: 0px 8px 20px rgba(255,255,255,0.05);
+}
+body.dark-mode section h3 {
+  color: #81C784;
+  border-left-color: #81C784;
+}
+body.dark-mode .skills li {
+  background: #81C784;
+}
+body.dark-mode .skills li:hover {
+  background: #66BB6A;
+}
+body.dark-mode .action-bar button {
+  background: #81C784;
+  color: #111;
+}
+body.dark-mode .action-bar button:hover {
+  background: #66BB6A;
+}
+
+/* Section titles */
+section h3 {
+  font-size: 20px;
+  border-left: 5px solid #4CAF50;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  color: #4CAF50;
+}
+
+/* Jobs & Education */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.job h4, .edu h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.job span, .edu span {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Skills */
+.skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skills li {
+  background: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+.skills li:hover {
+  background: #388E3C;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 20px; }
+  header h1 { font-size: 24px; }
+  header h2 { font-size: 16px; }
+  section h3 { font-size: 18px; }
+  .job-header { flex-direction: column; align-items: flex-start; }
+  .job span { margin-top: 5px; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .profile { width: 100px; height: 100px; }
+  .skills li { font-size: 12px; padding: 6px 10px; }
+}
+
+/* -------- PRINT TO PDF -------- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .container {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 20px;
+  }
+  .action-bar {
+    display: none; /* Hide buttons when printing */
+  }
+  .skills li {
+    background: #333 !important;
+    color: #fff !important;
+  }
+}
+
+
 /* ----------- PRINT TO PDF (1-page optimized) ----------- */
 @media print {
   body {
