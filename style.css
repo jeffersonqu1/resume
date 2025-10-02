@@ -8,6 +8,89 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+header h2 {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+}
+header .contact {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Section titles */
+section h3 {
+  font-size: 20px;
+  border-left: 5px solid #4CAF50;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  color: #4CAF50;
+}
+
+/* Job / Education */
+.job, .edu {
+  margin-bottom: 20px;
+}
+.job h4, .edu h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.job span, .edu span {
+  font-size: 14px;
+  color: #888;
+}
+.job p {
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Skills */
+.skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills li {
+  background: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+
 /* Action bar (buttons) */
 .action-bar {
   text-align: right;
