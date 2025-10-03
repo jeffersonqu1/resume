@@ -8,7 +8,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-
 /* Container */
 .container {
   max-width: 800px;
@@ -16,7 +15,7 @@ body {
   background: #fff;
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
@@ -49,22 +48,25 @@ header .contact {
 /* Section titles */
 section h3 {
   font-size: 20px;
-  border-left: 5px solid #4CAF50;
+  border-left: 5px solid #4caf50;
   padding-left: 10px;
   margin-bottom: 15px;
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 /* Job / Education */
-.job, .edu {
+.job,
+.edu {
   margin-bottom: 20px;
 }
-.job h4, .edu h4 {
+.job h4,
+.edu h4 {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
 }
-.job span, .edu span {
+.job span,
+.edu span {
   font-size: 14px;
   color: #888;
 }
@@ -82,7 +84,7 @@ section h3 {
   flex-wrap: wrap;
 }
 .skills li {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   padding: 8px 12px;
   margin: 5px;
@@ -90,14 +92,13 @@ section h3 {
   font-size: 14px;
 }
 
-
 /* Action bar (buttons) */
 .action-bar {
   text-align: right;
   padding: 10px 20px;
 }
 .action-bar button {
-  background: #4CAF50;
+  background: #4caf50;
   color: #fff;
   border: none;
   padding: 8px 15px;
@@ -108,7 +109,7 @@ section h3 {
   transition: background 0.3s;
 }
 .action-bar button:hover {
-  background: #388E3C;
+  background: #388e3c;
 }
 
 /* Resume container */
@@ -118,7 +119,7 @@ section h3 {
   background: #fff;
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   transition: background 0.3s, color 0.3s;
 }
 
@@ -130,33 +131,33 @@ body.dark-mode {
 body.dark-mode .container {
   background: #1e1e1e;
   color: #ddd;
-  box-shadow: 0px 8px 20px rgba(255,255,255,0.05);
+  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.05);
 }
 body.dark-mode section h3 {
-  color: #81C784;
-  border-left-color: #81C784;
+  color: #81c784;
+  border-left-color: #81c784;
 }
 body.dark-mode .skills li {
-  background: #81C784;
+  background: #81c784;
 }
 body.dark-mode .skills li:hover {
-  background: #66BB6A;
+  background: #66bb6a;
 }
 body.dark-mode .action-bar button {
-  background: #81C784;
+  background: #81c784;
   color: #111;
 }
 body.dark-mode .action-bar button:hover {
-  background: #66BB6A;
+  background: #66bb6a;
 }
 
 /* Section titles */
 section h3 {
   font-size: 20px;
-  border-left: 5px solid #4CAF50;
+  border-left: 5px solid #4caf50;
   padding-left: 10px;
   margin-bottom: 15px;
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 /* Jobs & Education */
@@ -166,12 +167,14 @@ section h3 {
   align-items: center;
   flex-wrap: wrap;
 }
-.job h4, .edu h4 {
+.job h4,
+.edu h4 {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
 }
-.job span, .edu span {
+.job span,
+.edu span {
   font-size: 14px;
   color: #888;
 }
@@ -185,7 +188,7 @@ section h3 {
   gap: 10px;
 }
 .skills li {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   padding: 8px 12px;
   border-radius: 20px;
@@ -193,22 +196,43 @@ section h3 {
   transition: background 0.3s;
 }
 .skills li:hover {
-  background: #388E3C;
+  background: #388e3c;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .container { padding: 20px; }
-  header h1 { font-size: 24px; }
-  header h2 { font-size: 16px; }
-  section h3 { font-size: 18px; }
-  .job-header { flex-direction: column; align-items: flex-start; }
-  .job span { margin-top: 5px; }
+  .container {
+    padding: 20px;
+  }
+  header h1 {
+    font-size: 24px;
+  }
+  header h2 {
+    font-size: 16px;
+  }
+  section h3 {
+    font-size: 18px;
+  }
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .job span {
+    margin-top: 5px;
+  }
 }
 @media (max-width: 480px) {
-  body { font-size: 14px; }
-  .profile { width: 100px; height: 100px; }
-  .skills li { font-size: 12px; padding: 6px 10px; }
+  body {
+    font-size: 14px;
+  }
+  .profile {
+    width: 100px;
+    height: 100px;
+  }
+  .skills li {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 
 /* -------- PRINT TO PDF -------- */
@@ -230,7 +254,6 @@ section h3 {
     color: #fff !important;
   }
 }
-
 
 /* ----------- PRINT TO PDF (1-page optimized) ----------- */
 @media print {
@@ -277,7 +300,8 @@ section h3 {
   }
 
   /* Jobs & Education */
-  .job, .edu {
+  .job,
+  .edu {
     margin-bottom: 8px;
     page-break-inside: avoid; /* prevent splitting jobs */
   }
@@ -298,9 +322,10 @@ section h3 {
   }
 
   /* Force everything on one page */
-  html, body {
-    width: 210mm;   /* A4 width */
-    height: 297mm;  /* A4 height */
+  html,
+  body {
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
     overflow: hidden;
   }
 
@@ -310,10 +335,9 @@ section h3 {
   }
 }
 
-
 /* Style for Share button */
 #linkedin-share {
-  background: #0077B5; /* LinkedIn blue */
+  background: #0077b5; /* LinkedIn blue */
   color: #fff;
   border: none;
   padding: 8px 15px;
@@ -330,7 +354,8 @@ section h3 {
 /* Rain background */
 #rain {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: -2; /* behind everything */
@@ -346,7 +371,7 @@ section h3 {
   padding: 40px;
   max-width: 900px;
   margin: 20px auto;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .action-bar {
@@ -356,10 +381,11 @@ section h3 {
 
 #bg {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: url('basketball.jpg') no-repeat center center fixed;
+  background: url("basketball.jpg") no-repeat center center fixed;
   background-size: cover;
   z-index: -3; /* behind everything */
 }
@@ -367,9 +393,110 @@ section h3 {
 body::before {
   content: "";
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.2); /* dark overlay */
+  background: rgba(0, 0, 0, 0.2); /* dark overlay */
   z-index: -1;
+}
+
+/* ===== Photo slider 样式 ===== */
+.photo-slider {
+  position: relative;
+  max-width: 900px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: #111; /* 在图片加载前的背景 */
+  z-index: 12; /* 确保在雨和背景之上 */
+}
+
+.photo-slider .slides {
+  display: flex;
+  transition: transform 400ms ease;
+  will-change: transform;
+}
+
+.photo-slider .slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.photo-slider .slide img {
+  display: block;
+  width: 100%;
+  height: 320px; /* 可调整高度或改为 auto */
+  object-fit: cover; /* 保持裁切与填充 */
+}
+
+/* 按钮 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: transform 150ms;
+  z-index: 20;
+}
+.slider-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-btn.prev {
+  left: 12px;
+}
+.slider-btn.next {
+  right: 12px;
+}
+
+/* 指示点（dots） */
+.photo-slider .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+.photo-slider .dots button {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 150ms, background 150ms;
+}
+.photo-slider .dots button.active {
+  transform: scale(1.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* 小屏幕时高度自适应 */
+@media (max-width: 480px) {
+  .photo-slider .slide img {
+    height: 200px;
+  }
+}
+
+/* 打印时隐藏 slider（简历导出到 PDF 时） */
+@media print {
+  .photo-slider {
+    display: none !important;
+  }
 }

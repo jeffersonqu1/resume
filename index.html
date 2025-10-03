@@ -1,200 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Resume</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- jsPDF + html2canvas (from CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Resume</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- jsPDF + html2canvas (from CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
     <div id="bg"></div>
 
     <canvas id="rain"></canvas>
 
-  <div class="action-bar">
-  <button id="theme-btn">🌙 Dark Mode</button>
-  <button id="print-btn">🖨️ Print to PDF</button>
-  <button id="download-pdf-btn">📥 Download PDF</button>
-  <a id="linkedin-share" 
-     href="https://www.linkedin.com/sharing/share-offsite/?url=https://yourusername.github.io" 
-     target="_blank">
-    🔗 Share on LinkedIn
-  </a>
-</div>
+    <div class="action-bar">
+      <button id="theme-btn">🌙 Dark Mode</button>
+      <button id="print-btn">🖨️ Print to PDF</button>
+      <button id="download-pdf-btn">📥 Download PDF</button>
+      <a id="linkedin-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https://yourusername.github.io" target="_blank"> 🔗 Share on LinkedIn </a>
+    </div>
 
-  <div class="container" id="resume">
-    <!-- Header -->
-    <header>
-      <img src="profile.jpg" alt="Profile Photo" class="profile">
-      <h1>Your Name</h1>
-      <h2>Job Title / Position</h2>
-      <p class="contact">
-        📧 your.email@example.com | 🌐 yourwebsite.com | 📞 (123) 456-7890
-      </p>
-    </header>
+    <div class="container" id="resume">
+      <!-- Header -->
+      <header>
+        <img src="profile.jpg" alt="Profile Photo" class="profile" />
+        <h1>Zhaopeng Qu (Jefferson)</h1>
+        <h2>Software Developer/ Position</h2>
+        <p class="contact">📧 jeffersonqu0428@gmail.com | 🌐 https://jeffersonqu1.github.io/resume | 📞 (709) 631-3927</p>
+      </header>
 
-    <!-- About -->
-    <section>
-      <h3>About Me</h3>
-      <p>
-        A short summary about yourself. Highlight your key strengths, passions,
-        and what makes you unique as a professional.
-      </p>
-    </section>
+      <!-- About -->
+      <section>
+        <h3>About Me</h3>
+        <p>A short summary about yourself. Highlight your key strengths, passions, and what makes you unique as a professional.</p>
+      </section>
 
-    <!-- Experience -->
-    <section>
-      <h3>Experience</h3>
-      <div class="job">
-        <div class="job-header">
-          <h4>Senior Developer @ TechCorp</h4>
-          <span>2021 – Present</span>
+      <!-- Experience -->
+      <section>
+        <h3>Experience</h3>
+        <div class="job">
+          <div class="job-header">
+            <h4>Senior Developer @ TechCorp</h4>
+            <span>2021 – Present</span>
+          </div>
+          <p>
+            - Led a team of 5 engineers to build scalable web apps.<br />
+            - Improved performance by 30% with optimized architecture.
+          </p>
         </div>
-        <p>
-          - Led a team of 5 engineers to build scalable web apps.<br>
-          - Improved performance by 30% with optimized architecture.
-        </p>
-      </div>
-      <div class="job">
-        <div class="job-header">
-          <h4>Software Engineer @ WebWorks</h4>
-          <span>2018 – 2021</span>
+        <div class="job">
+          <div class="job-header">
+            <h4>Software Engineer @ WebWorks</h4>
+            <span>2018 – 2021</span>
+          </div>
+          <p>
+            - Developed full-stack apps with React & Node.js.<br />
+            - Automated CI/CD pipelines for faster deployment.
+          </p>
         </div>
-        <p>
-          - Developed full-stack apps with React & Node.js.<br>
-          - Automated CI/CD pipelines for faster deployment.
-        </p>
-      </div>
-    </section>
+      </section>
 
-    <!-- Education -->
-    <section>
-      <h3>Education</h3>
-      <div class="edu">
-        <h4>B.Sc. Computer Science</h4>
-        <span>University Name – 2014–2018</span>
-      </div>
-    </section>
+      <!-- Education -->
+      <section>
+        <h3>Education</h3>
+        <div class="edu">
+          <h4>B.Sc. Computer Science</h4>
+          <span>University Name – 2014–2018</span>
+        </div>
+      </section>
 
-    <!-- Skills -->
-    <section>
-      <h3>Skills</h3>
-      <ul class="skills">
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Python</li>
-        <li>SQL</li>
-        <li>Cloud (AWS/Azure)</li>
-      </ul>
-    </section>
-  </div>
+      <!-- Skills -->
+      <section>
+        <h3>Skills</h3>
+        <ul class="skills">
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>Cloud (AWS/Azure)</li>
+        </ul>
+      </section>
 
-  <!-- Script -->
-  <script>
-    const themeBtn = document.getElementById("theme-btn");
-    const printBtn = document.getElementById("print-btn");
-    const downloadBtn = document.getElementById("download-pdf-btn");
-    const body = document.body;
+      <section>
+        <!-- Photo Slider 开始 -->
+        <div class="photo-slider" id="photoSlider" aria-label="Photo slider">
+          <div class="slides" role="list">
+            <div class="slide" role="listitem"><img src="1.jpg" alt="Photo 1 description" /></div>
+            <div class="slide" role="listitem"><img src="2.jpg" alt="Photo 2 description" /></div>
+            <div class="slide" role="listitem"><img src="3.jpg" alt="Photo 3 description" /></div>
+            <div class="slide" role="listitem"><img src="4.jpg" alt="Photo 4 description" /></div>
 
-     const canvas = document.getElementById("rain");
-    const ctx = canvas.getContext("2d");
-    let drops = [];
+            <!-- 如需更多照片，复制上面一行并修改文件名 -->
+          </div>
 
-    // Fullscreen canvas
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+          <!-- 左右箭头 -->
+          <button class="slider-btn prev" aria-label="Previous photo">❮</button>
+          <button class="slider-btn next" aria-label="Next photo">❯</button>
 
-    // Create raindrops
-    class Drop {
-      constructor() {
-        this.reset();
+          <!-- 指示点 -->
+          <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+        </div>
+        <!-- Photo Slider 结束 -->
+      </section>
+    </div>
+
+    <!-- Script -->
+    <script>
+      const themeBtn = document.getElementById("theme-btn")
+      const printBtn = document.getElementById("print-btn")
+      const downloadBtn = document.getElementById("download-pdf-btn")
+      const body = document.body
+
+      const canvas = document.getElementById("rain")
+      const ctx = canvas.getContext("2d")
+      let drops = []
+
+      // Fullscreen canvas
+      function resizeCanvas() {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
       }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * -canvas.height;
-        this.length = 15 + Math.random() * 20;
-        this.speed = 4 + Math.random() * 4;
-        this.opacity = 0.3 + Math.random() * 0.3;
-      }
-      fall() {
-        this.y += this.speed;
-        if (this.y > canvas.height) {
-          this.reset();
+      window.addEventListener("resize", resizeCanvas)
+      resizeCanvas()
+
+      // Create raindrops
+      class Drop {
+        constructor() {
+          this.reset()
+        }
+        reset() {
+          this.x = Math.random() * canvas.width
+          this.y = Math.random() * -canvas.height
+          this.length = 15 + Math.random() * 20
+          this.speed = 4 + Math.random() * 4
+          this.opacity = 0.3 + Math.random() * 0.3
+        }
+        fall() {
+          this.y += this.speed
+          if (this.y > canvas.height) {
+            this.reset()
+          }
+        }
+        draw() {
+          ctx.beginPath()
+          ctx.strokeStyle = `rgba(174,194,224,${this.opacity})`
+          ctx.lineWidth = 1
+          ctx.moveTo(this.x, this.y)
+          ctx.lineTo(this.x, this.y + this.length)
+          ctx.stroke()
         }
       }
-      draw() {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(174,194,224,${this.opacity})`;
-        ctx.lineWidth = 1;
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x, this.y + this.length);
-        ctx.stroke();
+
+      // Create drops
+      for (let i = 0; i < 150; i++) {
+        drops.push(new Drop())
       }
-    }
 
-    // Create drops
-    for (let i = 0; i < 150; i++) {
-      drops.push(new Drop());
-    }
-
-    // Animate rain
-    function animateRain() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let drop of drops) {
-        drop.fall();
-        drop.draw();
+      // Animate rain
+      function animateRain() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        for (let drop of drops) {
+          drop.fall()
+          drop.draw()
+        }
+        requestAnimationFrame(animateRain)
       }
-      requestAnimationFrame(animateRain);
-    }
-    animateRain();
+      animateRain()
 
-    // Load saved theme
-    if (localStorage.getItem("theme") === "dark") {
-      body.classList.add("dark-mode");
-      themeBtn.textContent = "☀️ Light Mode";
-    }
-
-    // Theme toggle
-    themeBtn.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-      if (body.classList.contains("dark-mode")) {
-        themeBtn.textContent = "☀️ Light Mode";
-        localStorage.setItem("theme", "dark");
-      } else {
-        themeBtn.textContent = "🌙 Dark Mode";
-        localStorage.setItem("theme", "light");
+      // Load saved theme
+      if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode")
+        themeBtn.textContent = "☀️ Light Mode"
       }
-    });
 
-    // Print to PDF (browser print)
-    printBtn.addEventListener("click", () => {
-      window.print();
-    });
+      // Theme toggle
+      themeBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode")
+        if (body.classList.contains("dark-mode")) {
+          themeBtn.textContent = "☀️ Light Mode"
+          localStorage.setItem("theme", "dark")
+        } else {
+          themeBtn.textContent = "🌙 Dark Mode"
+          localStorage.setItem("theme", "light")
+        }
+      })
 
-    // Direct PDF download
-    downloadBtn.addEventListener("click", () => {
-      const resume = document.getElementById("resume");
+      // Print to PDF (browser print)
+      printBtn.addEventListener("click", () => {
+        window.print()
+      })
 
-      html2canvas(resume, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF("p", "mm", "a4");
+      // Direct PDF download
+      downloadBtn.addEventListener("click", () => {
+        const resume = document.getElementById("resume")
 
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        html2canvas(resume, { scale: 2 }).then(canvas => {
+          const imgData = canvas.toDataURL("image/png")
+          const { jsPDF } = window.jspdf
+          const pdf = new jsPDF("p", "mm", "a4")
 
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save("My_Resume.pdf");
-      });
-    });
-  </script>
-</body>
+          const imgProps = pdf.getImageProperties(imgData)
+          const pdfWidth = pdf.internal.pageSize.getWidth()
+          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
+
+          pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight)
+          pdf.save("My_Resume.pdf")
+        })
+      })
+
+      /* Photo slider 脚本 */
+      function showSlider() {
+        const slider = document.getElementById("photoSlider")
+        if (!slider) return
+
+        const slidesEl = slider.querySelector(".slides")
+        const slides = Array.from(slidesEl.children)
+        const prevBtn = slider.querySelector(".slider-btn.prev")
+        const nextBtn = slider.querySelector(".slider-btn.next")
+        const dotsContainer = slider.querySelector(".dots")
+
+        let index = 0
+        const total = slides.length
+        let isDragging = false
+        let startX = 0
+        let currentTranslate = 0
+        let prevTranslate = 0
+        let animationID
+        let autoplayInterval
+        const AUTOPLAY_DELAY = 3500
+
+        // 创建指示点
+        slides.forEach((_, i) => {
+          const btn = document.createElement("button")
+          btn.setAttribute("aria-label", "Go to slide " + (i + 1))
+          btn.addEventListener("click", () => goToSlide(i))
+          dotsContainer.appendChild(btn)
+        })
+
+        const dots = Array.from(dotsContainer.children)
+
+        function update() {
+          const translateX = -index * slider.clientWidth
+          slidesEl.style.transform = `translateX(${translateX}px)`
+          dots.forEach((d, i) => d.classList.toggle("active", i === index))
+        }
+
+        function goToSlide(i) {
+          index = (i + total) % total
+          update()
+          resetAutoplay()
+        }
+
+        prevBtn.addEventListener("click", () => {
+          goToSlide(index - 1)
+        })
+        nextBtn.addEventListener("click", () => {
+          goToSlide(index + 1)
+        })
+
+        // 自动播放
+        function startAutoplay() {
+          stopAutoplay()
+          autoplayInterval = setInterval(() => {
+            goToSlide(index + 1)
+          }, AUTOPLAY_DELAY)
+        }
+        function stopAutoplay() {
+          if (autoplayInterval) clearInterval(autoplayInterval)
+        }
+        function resetAutoplay() {
+          stopAutoplay()
+          startAutoplay()
+        }
+
+        // 鼠标悬停暂停
+        slider.addEventListener("mouseenter", stopAutoplay)
+        slider.addEventListener("mouseleave", startAutoplay)
+
+        // 触摸/拖拽支持（移动端）
+        slidesEl.addEventListener("touchstart", touchStart, { passive: true })
+        slidesEl.addEventListener("touchmove", touchMove, { passive: true })
+        slidesEl.addEventListener("touchend", touchEnd)
+
+        slidesEl.addEventListener("pointerdown", pointerDown)
+        window.addEventListener("pointerup", pointerUp)
+        window.addEventListener("pointermove", pointerMove)
+
+        function touchStart(e) {
+          isDragging = true
+          startX = e.touches[0].clientX
+          prevTranslate = -index * slider.clientWidth
+          slidesEl.style.transition = "none"
+        }
+        function touchMove(e) {
+          if (!isDragging) return
+          const currentX = e.touches[0].clientX
+          const delta = currentX - startX
+          slidesEl.style.transform = `translateX(${prevTranslate + delta}px)`
+        }
+        function touchEnd(e) {
+          if (!isDragging) return
+          isDragging = false
+          slidesEl.style.transition = ""
+          const endX = (e.changedTouches && e.changedTouches[0].clientX) || startX
+          const moved = endX - startX
+          if (moved < -50) goToSlide(index + 1)
+          else if (moved > 50) goToSlide(index - 1)
+          else update()
+        }
+
+        // Pointer (鼠标拖动)
+        function pointerDown(e) {
+          if (e.pointerType === "mouse" && e.button !== 0) return // 只响应左键
+          isDragging = true
+          startX = e.clientX
+          prevTranslate = -index * slider.clientWidth
+          slidesEl.style.transition = "none"
+          slidesEl.setPointerCapture && slidesEl.setPointerCapture(e.pointerId)
+        }
+        function pointerMove(e) {
+          if (!isDragging) return
+          const currentX = e.clientX
+          const delta = currentX - startX
+          slidesEl.style.transform = `translateX(${prevTranslate + delta}px)`
+        }
+        function pointerUp(e) {
+          if (!isDragging) return
+          isDragging = false
+          slidesEl.style.transition = ""
+          const endX = e.clientX
+          const moved = endX - startX
+          if (moved < -50) goToSlide(index + 1)
+          else if (moved > 50) goToSlide(index - 1)
+          else update()
+        }
+
+        // 在窗口尺寸改变时调整位置
+        window.addEventListener("resize", update)
+
+        // 初始
+        update()
+        startAutoplay()
+      }
+
+      showSlider()
+    </script>
+  </body>
 </html>
