@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Resume</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <!-- jsPDF + html2canvas (from CDN) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
   <body>
     <div id="bg"></div>
@@ -15,15 +18,15 @@
     <canvas id="rain"></canvas>
 
     <div class="action-bar">
-      <button id="theme-btn">🌙 Dark Mode</button>
-      <button id="print-btn">🖨️ Print to PDF</button>
-      <button id="download-pdf-btn">📥 Download PDF</button>
+      <button data-aos="fade-up" data-aos-anchor-placement="bottom-center" id="theme-btn">🌙 Dark Mode</button>
+      <button data-aos="fade-down" id="print-btn">🖨️ Print to PDF</button>
+      <button data-aos="fade-up" data-aos-anchor-placement="bottom-center" id="download-pdf-btn">📥 Download PDF</button>
       <a id="linkedin-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https://yourusername.github.io" target="_blank"> 🔗 Share on LinkedIn </a>
     </div>
 
     <div class="container" id="resume">
       <!-- Header -->
-      <header>
+      <header data-aos="fade-down">
         <img src="profile.jpg" alt="Profile Photo" class="profile" />
         <h1>Zhaopeng Qu (Jefferson)</h1>
         <h2>Software Developer/ Position</h2>
@@ -107,6 +110,8 @@
 
     <!-- Script -->
     <script>
+      AOS.init()
+
       const themeBtn = document.getElementById("theme-btn")
       const printBtn = document.getElementById("print-btn")
       const downloadBtn = document.getElementById("download-pdf-btn")
