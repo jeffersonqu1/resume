@@ -500,3 +500,164 @@ body::before {
     display: none !important;
   }
 }
+
+/* ====== Ubik 3D Cube ====== */
+.ubik-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  perspective: 1000px;
+  pointer-events: auto;
+  z-index: 30; /* above background should be enough */
+}
+
+/* size control */
+:root {
+  --ubik-size: 220px; /* adjust size */
+  --ubik-inner-scale: 0.36;
+  --ubik-glow: 0 6px 30px rgba(120, 200, 255, 0.08);
+}
+
+/* outer cube */
+.cube {
+  position: relative;
+  width: var(--ubik-size);
+  height: var(--ubik-size);
+  transform-style: preserve-3d;
+  transform: rotateX(-18deg) rotateY(22deg);
+  transition: transform 400ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  animation: ubik-auto-rotate 12s linear infinite;
+  filter: drop-shadow(var(--ubik-glow));
+}
+
+/* pause animation when hovered */
+.cube:hover {
+  animation-play-state: paused;
+}
+
+/* faces */
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+  font-size: clamp(18px, 4vw, 36px);
+  letter-spacing: 2px;
+  color: #0b1220;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 18px rgba(255, 255, 255, 0.04);
+  background: linear-gradient(135deg, rgba(240, 248, 255, 0.95), rgba(200, 230, 255, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transform-origin: center center;
+  mix-blend-mode: screen;
+}
+
+/* position each face */
+.face-front {
+  transform: translateZ(calc(var(--ubik-size) / 2));
+}
+.face-back {
+  transform: rotateY(180deg) translateZ(calc(var(--ubik-size) / 2));
+}
+.face-right {
+  transform: rotateY(90deg) translateZ(calc(var(--ubik-size) / 2));
+}
+.face-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--ubik-size) / 2));
+}
+.face-top {
+  transform: rotateX(90deg) translateZ(calc(var(--ubik-size) / 2));
+}
+.face-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--ubik-size) / 2));
+}
+
+/* subtle holographic lines on faces (pseudo-element) */
+.cube-face::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 8px;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.02));
+  mix-blend-mode: overlay;
+}
+
+/* inner micro-cube */
+.inner-cube {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--ubik-size) * var(--ubik-inner-scale));
+  height: calc(var(--ubik-size) * var(--ubik-inner-scale));
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) translateZ(calc(var(--ubik-size) * 0.18));
+  animation: inner-spin 3.6s linear infinite;
+  pointer-events: none;
+  opacity: 0.95;
+  filter: drop-shadow(0 12px 30px rgba(0, 120, 200, 0.15));
+}
+
+/* tiny faces */
+.ic-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10, 40, 80, 0.9), rgba(20, 80, 160, 0.9));
+  border-radius: 4px;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* place inner cube faces */
+.ic-face:nth-child(1) {
+  transform: translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+.ic-face:nth-child(2) {
+  transform: rotateY(180deg) translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+.ic-face:nth-child(3) {
+  transform: rotateY(90deg) translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+.ic-face:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+.ic-face:nth-child(5) {
+  transform: rotateX(90deg) translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+.ic-face:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(calc(var(--ubik-size) * var(--ubik-inner-scale) / 2));
+}
+
+/* animations */
+@keyframes ubik-auto-rotate {
+  0% {
+    transform: rotateX(-18deg) rotateY(22deg);
+  }
+  50% {
+    transform: rotateX(-12deg) rotateY(382deg);
+  }
+  100% {
+    transform: rotateX(-18deg) rotateY(742deg);
+  }
+}
+@keyframes inner-spin {
+  from {
+    transform: translate(-50%, -50%) translateZ(calc(var(--ubik-size) * 0.18)) rotateX(0) rotateY(0);
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(calc(var(--ubik-size) * 0.18)) rotateX(360deg) rotateY(720deg);
+  }
+}
+
+/* small responsive tweak */
+@media (max-width: 600px) {
+  :root {
+    --ubik-size: 150px;
+  }
+}

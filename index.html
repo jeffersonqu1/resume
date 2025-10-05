@@ -106,6 +106,30 @@
         </div>
         <!-- Photo Slider 结束 -->
       </section>
+
+      <section>
+        <!-- Ubik Cube (place where you want it to appear) -->
+        <div class="ubik-wrap" aria-hidden="true">
+          <div id="ubik-cube" class="cube">
+            <div class="cube-face face-front">UBIK</div>
+            <div class="cube-face face-back">UBIK</div>
+            <div class="cube-face face-right">UBIK</div>
+            <div class="cube-face face-left">UBIK</div>
+            <div class="cube-face face-top">UBIK</div>
+            <div class="cube-face face-bottom">UBIK</div>
+
+            <!-- inner rotating micro-cube for depth -->
+            <div class="inner-cube" aria-hidden="true">
+              <div class="ic-face"></div>
+              <div class="ic-face"></div>
+              <div class="ic-face"></div>
+              <div class="ic-face"></div>
+              <div class="ic-face"></div>
+              <div class="ic-face"></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- Script -->
@@ -349,6 +373,78 @@
         startAutoplay()
       }
 
+      function showCube() {
+        const cube = document.getElementById("ubik-cube")
+        if (!cube) return
+
+        let dragging = false
+        let lastX = 0,
+          lastY = 0
+        let rotX = -18,
+          rotY = 22
+        let vx = 0,
+          vy = 0
+
+        const apply = () => {
+          cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`
+        }
+
+        // pointer handlers
+        cube.addEventListener("pointerdown", e => {
+          dragging = true
+          cube.style.animationPlayState = "paused"
+          lastX = e.clientX
+          lastY = e.clientY
+          cube.setPointerCapture && cube.setPointerCapture(e.pointerId)
+        })
+
+        window.addEventListener("pointermove", e => {
+          if (!dragging) return
+          const dx = e.clientX - lastX
+          const dy = e.clientY - lastY
+          lastX = e.clientX
+          lastY = e.clientY
+          rotY += dx * 0.3
+          rotX -= dy * 0.25
+          // clamp X so cube doesn't flip weirdly
+          rotX = Math.max(-80, Math.min(80, rotX))
+          vx = dx * 0.05
+          vy = dy * 0.05
+          apply()
+        })
+
+        window.addEventListener("pointerup", e => {
+          if (!dragging) return
+          dragging = false
+          // release pointer capture
+          try {
+            cube.releasePointerCapture && cube.releasePointerCapture(e.pointerId)
+          } catch {}
+          // slowly resume auto-rotate by using momentum
+          const decay = setInterval(() => {
+            // apply friction
+            vx *= 0.94
+            vy *= 0.94
+            if (Math.abs(vx) < 0.002 && Math.abs(vy) < 0.002) {
+              clearInterval(decay)
+              // resume CSS animation
+              cube.style.animationPlayState = ""
+              return
+            }
+            rotY += vx * 10
+            rotX -= vy * 10
+            rotX = Math.max(-80, Math.min(80, rotX))
+            apply()
+          }, 16)
+        })
+
+        // pause auto-rotate when hovered by mouse (already handled in CSS but sync JS)
+        cube.addEventListener("mouseenter", () => (cube.style.animationPlayState = "paused"))
+        cube.addEventListener("mouseleave", () => {
+          if (!dragging) cube.style.animationPlayState = ""
+        })
+      }
+      showCube()
       showSlider()
     </script>
   </body>
