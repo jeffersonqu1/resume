@@ -661,3 +661,84 @@ body::before {
     --ubik-size: 150px;
   }
 }
+
+/* ===== Projects Section with Images ===== */
+.projects {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.projects-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 行之间的间距 */
+}
+
+.projects-row {
+  display: flex;
+  gap: 20px; /* 每个项目之间的间距 */
+}
+
+.project-item {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 16px;
+  gap: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.project-img {
+  width: 120px; /* 固定宽度，统一大小 */
+  height: 100px; /* 固定高度，避免大小不一 */
+  object-fit: cover; /* 保持比例，填满框 */
+  border-radius: 8px;
+  flex-shrink: 0; /* 不要被压缩 */
+}
+
+.project-content {
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  margin: 0 0 6px;
+  color: #333;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.project-date {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* 小屏幕时改为上下布局 */
+@media (max-width: 700px) {
+  .projects-row {
+    flex-direction: column;
+  }
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .project-img {
+    width: 100%;
+    height: 160px;
+  }
+}
